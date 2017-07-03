@@ -1,3 +1,11 @@
+## Content
+
+## JSON WEB TOKEN BEST PRACTICES
+* Keep it secret. Keep it safe. The signing key should be treated like any other credentials and revealed only to services that absolutely need it.
+* Do not add sensitive data to the payload. Tokens are signed to protect against manipulation and are easily decoded. Add the bare minimum number of claims to the payload for best performance and security.
+* Give tokens an expiration. Technically, once a token is signed – it is valid forever – unless the signing key is changed or expiration explicitly set. This could pose potential issues so have a strategy for expiring and/or revoking tokens.
+* Embrace HTTPS. Do not send tokens over non-HTTPS connections as those requests can be intercepted and tokens compromised.
+
 ## Cookie Based Authentication
 ![img](img/cookie-token-auth.png)
 
@@ -31,4 +39,7 @@ A JSON Web Token is comprised of three parts: the header, payload, and signature
 The format of a JWT is header.payload.signature
 Sensitive data, such as passwords, should never be stored in the payload.
 
-[Guide](https://goo.gl/wCw22N)
+Tokens are signed to protect against manipulation, they are not encrypted. What this means is that a token can be easily decoded and its contents revealed.
+
+[Token Based Authentication Made Easy](https://goo.gl/qRvVJF)
+[Cookies vs Token Auth](https://goo.gl/wCw22N)

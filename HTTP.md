@@ -53,7 +53,10 @@ Permits the server to skip sending the actual content of the document if it hasn
 Port 80 is the default port for HTTP connections.
 
 ## Performance
-Head-of-line Blocking
+Head-of-line Blocking is one request is blocking others from others from completing.
+A browser often open 6 request simultaneously.
+We can save a lot of space if we can compress the header.
+
 
 ## Keep Alive
 
@@ -76,3 +79,27 @@ Certificate Authority Signatures
 ## TSL Handshake
 
 ## [Mixed Content](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content)
+
+## HTTP/2
+Header Compression
+
+Multiplexing
+is a system or signal involving simultaneous transmission of several messages along a single channel of communication
+
+## Same Origin Policy
+An origin is defined by the scheme, host, and port of a URL.
+Generally speaking, documents retrieved from distinct origins are isolated from each other. For example, if a document retrieved from http://example.com/doc.html tries to access the DOM of a document retrieved from https://example.com/target.html, the user agent will disallow access because the origin of the first document, (http, example.com, 80), does not match the origin of the second document (https, example.com, 443).
+
+You can't make HTTP request to other origins.
+
+## [HTTP access control (CORS)](https://goo.gl/LJcvc6)
+* A resource makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port to its own.
+* For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts.
+* The Cross-Origin Resource Sharing standard works by adding new HTTP headers that allow servers to describe the set of origins that are permitted to read that information using a web browser.
+
+The Cross-Origin Resource Sharing (CORS) mechanism gives web servers cross-domain access controls, which enable secure cross-domain data transfers. Modern browsers use CORS in an API container - such as XMLHttpRequest or Fetch - to mitigate risks of cross-origin HTTP requests.
+
+## Preflighted requests
+Unlike “simple requests” (discussed above), "preflighted" requests first send an HTTP request by the OPTIONS method to the resource on the other domain, in order to determine whether the actual request is safe to send. Cross-site requests are preflighted like this since they may have implications to user data.
+
+## Security Exploit - CSRF
