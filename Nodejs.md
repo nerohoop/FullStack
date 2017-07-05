@@ -1,6 +1,50 @@
 #Content
 
+## Why using NodeJS
+
+Node is single-threaded and uses a concurrency model based on an event loop.
+It is non-blocking, so it doesn't make the program wait, but instead it registers a callback and lets the program continue.
+Node is ideal for I/O bound applications (or those that wait on user events), but not so great for CPU-heavy applications.
+
 ## Basics
+
+### Managing Modules
+
+```javascript
+  var http = require('http');
+  var myFile = require('./myFile'); // loads myFile.js
+```
+
+Node uses two core modules for managing module dependencies:
+* The 'require' module, which appears to be available on the global scope
+* The 'module' module, which also appears to be available on the global scope
+
+When Node invokes that require() function with a local file path as the function’s only argument, Node goes through the following sequence of steps:
+* **Resolving**: To find the absolute path of the file.
+* **Loading**: To determine the type of the file content.
+* **Wrapping**: To give the file its private scope. This is what makes both the require and module objects local to every file we require.
+* **Evaluating**: This is what the VM eventually does with the loaded code.
+* **Caching**: So that when we require this file again, we don’t go over all the steps another time.
+
+[Modules](https://medium.freecodecamp.com/requiring-modules-in-node-js-everything-you-need-to-know-e7fbd119be8)
+
+For local modules must be prefixed with './'. So if your file is named mymodule.js then:  
+     var mymodule = require('./mymodule.js')  
+The '.js' is optional here and you will often see it omitted.
+
+The callback function must be called using the idiomatic node(err, data)  
+convention. This convention stipulates that unless there's an error, the  
+first argument passed to the callback will be null, and the second will be  
+your data.
+
+### Events
+The EventEmitter pattern allows implementors to emit an event to which the consumers can subscribe if they are interested.
+This pattern may be familiar to you from the browser, where it is used for attaching DOM event handlers.
+
+## Streams
+Streams represent an abstract interface for asynchronously manipulating a continuous flow of data.
+
+
 
 ### Read command-line arguments
 You can access command-line arguments via the global process object. The  
@@ -25,20 +69,6 @@ Buffer objects are Node's way of efficiently representing arbitrary arrays
 of data, whether it be ascii, binary or some other format. Buffer objects  
 can be converted to strings by simply calling the toString() method on  
 them. e.g. var str = buf.toString().
-
-## Managing Modules
-Node uses two core modules for managing module dependencies:
-* The 'require' module, which appears to be available on the global scope
-* The 'module' module, which also appears to be available on the global scope
-
-When Node invokes that require() function with a local file path as the function’s only argument, Node goes through the following sequence of steps:
-* **Resolving**: To find the absolute path of the file.
-* **Loading**: To determine the type of the file content.
-* **Wrapping**: To give the file its private scope. This is what makes both the require and module objects local to every file we require.
-* **Evaluating**: This is what the VM eventually does with the loaded code.
-* **Caching**: So that when we require this file again, we don’t go over all the steps another time.
-
-[Modules](https://medium.freecodecamp.com/requiring-modules-in-node-js-everything-you-need-to-know-e7fbd119be8)
 
 ## npm
 
@@ -66,3 +96,5 @@ Run `npm help dist-tag` to learn more about it.
 
 Let's add a dist-tag on your package,  
 and then `how-to-npm verify` to check it.  
+
+## HTTP Request
