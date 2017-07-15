@@ -1,5 +1,13 @@
 # Content
 
+## SQL
+
+Object-relational mapping (ORM, O/RM, and O/R mapping tool) in computer science is a programming technique for converting data between incompatible type systems using object-oriented programming languages. This creates, in effect, a "virtual object database" that can be used from within the programming language.
+
+When using the ORM, the configurational process starts by describing the database tables we’ll be dealing with, and then by defining our own classes which will be mapped to those tables
+
+What is ForeignKey relationship?
+
 ## NoSQL database
 MongoDB is a NoSQL database which stores data in collections and documents, as opposed to tables and rows in SQL.
 
